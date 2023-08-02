@@ -19,7 +19,7 @@ def calculate_hash(text, algorithm="sha256"):
         hashIng = True
     elif algorithm == "none":
         hashIng = False
-        return None  # Return None if hashing is disabled
+        return None  
     else:
         raise ValueError("Invalid algorithm. Supported options are 'sha256' and 'sha512'.")
 
@@ -40,8 +40,6 @@ def hash_button_clicked():
         hash_code = calculate_hash(text, algorithm)
         if hash_code is not None:
             frequency = int(frequency_entry.get())
-            delay = int(delay_entry.get())  # Convert delay to an integer
-
             # Save the hash code to a file with the specified frequency
             with open(filePath, "a") as file:
                 for _ in range(frequency):
@@ -50,8 +48,6 @@ def hash_button_clicked():
     else:
         # Hashing is disabled, save the original text to the file
         frequency = int(frequency_entry.get())
-        delay = int(delay_entry.get())  # Convert delay to an integer
-
         with open("hash_codes.txt", "a") as file:
             for _ in range(frequency):
                 file.write(text + "\n")
@@ -68,18 +64,18 @@ def delete_file_contents(filePath):
 
 
 app = tk.Tk()
-app.title("storage-overloader")
+app.title("file-overloader")
 app.geometry("500x150")
 
 # Create widgets
-text_label = tk.Label(app, text="Enter the text to hash:")
+text_label = tk.Label(app, text="Enter the text:")
 text_entry = tk.Entry(app, width=30)
 algorithm_var = tk.StringVar(value="sha256")
 algorithm_label = tk.Label(app, text="Select hashing algorithm:")
 algorithm_menu = tk.OptionMenu(app, algorithm_var, "sha256", "sha512","none")
 frequency_label = tk.Label(app, text="Enter frequency:")
 frequency_entry = tk.Entry(app, width=5)
-hash_button = tk.Button(app, text="Calculate Hash", command=hash_button_clicked)
+hash_button = tk.Button(app, text="Start", command=hash_button_clicked)
 delete_button = tk.Button(app, text="Delete File", command=partial(delete_file_contents, filePath))
 
 
