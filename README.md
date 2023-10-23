@@ -20,6 +20,5 @@ another one
 >       Delete file: file.truncate(0)
 
 
-### -"yes, I use A.I." 
 
 [Download](https://github.com/howeswarderbutcool/python-file-overload/releases/latest)
