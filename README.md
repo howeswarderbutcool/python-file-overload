@@ -1,6 +1,5 @@
 # python-file-overload
 
-this is a complete stupid idea i had after taking a big shit 💩
 
 this was probalby already done like millions of times but here you go. 
 another one 
